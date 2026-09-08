@@ -1,0 +1,12 @@
+{
+  "name": "college-fee-tracker",
+  "version": "1.0.0",
+  "description": "Free, zero-dependency college fee collection tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>College Fee Tracker — Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <h1>🎓 Fee Collection Tracker</h1>
+    <div class="actions">
+      <button id="exportBtn">Export CSV</button>
+      <button id="addStudentBtn" class="primary">+ Add Student</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats" id="stats"></div>
+
+    <div class="toolbar">
+      <input type="text" id="search" placeholder="Search by name or roll number..." />
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>Dept / Year</th>
+          <th>Total Fee</th>
+          <th>Paid</th>
+          <th>Due</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentRows"></tbody>
+    </table>
+  </div>
+
+  <!-- Add/Edit Student Modal -->
+  <div class="modal-overlay hidden" id="studentModal">
+    <div class="modal">
+      <h2 id="studentModalTitle">Add Student</h2>
+      <input type="hidden" id="studentId" />
+      <label>Full Name</label>
+      <input type="text" id="sName" />
+      <label>Roll Number</label>
+      <input type="text" id="sRollNo" />
+      <label>Department</label>
+      <input type="text" id="sDept" placeholder="e.g. Computer Science" />
+      <label>Year</label>
+      <input type="text" id="sYear" placeholder="e.g. 2nd Year" />
+      <label>Total Fee (₹)</label>
+      <input type="number" id="sTotalFee" />
+      <div class="modal-actions">
+        <button class="cancel" onclick="closeStudentModal()">Cancel</button>
+        <button class="save" onclick="saveStudent()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Record Payment Modal -->
+  <div class="modal-overlay hidden" id="paymentModal">
+    <div class="modal">
+      <h2>Record Payment</h2>
+      <input type="hidden" id="paymentStudentId" />
+      <label>Amount (₹)</label>
+      <input type="number" id="pAmount" />
+      <label>Mode</label>
+      <select id="pMode">
+        <option>Cash</option>
+        <option>Bank Transfer</option>
+        <option>UPI</option>
+        <option>Cheque</option>
+        <option>Other</option>
+      </select>
+      <label>Date</label>
+      <input type="date" id="pDate" />
+      <label>Note (optional)</label>
+      <input type="text" id="pNote" placeholder="e.g. Semester 3 fee" />
+      <div class="modal-actions">
+        <button class="cancel" onclick="closePaymentModal()">Cancel</button>
+        <button class="save" onclick="savePayment()">Save Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
